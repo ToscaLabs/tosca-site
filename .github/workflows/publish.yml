@@ -1,0 +1,23 @@
+name: Publish on GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Add CNAME file
+        run: echo "toscalabs.org" > themes/tosca-theme/static/CNAME
+
+      - name: Build and deploy
+        uses: shalzz/zola-deploy-action@v0.21.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
