@@ -8,6 +8,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
+    if: github.ref == 'refs/heads/master'
     permissions: write-all
 
     steps:
@@ -18,6 +20,7 @@ jobs:
       # run: echo "toscalabs.org" > themes/tosca-theme/static/CNAME
 
       - name: Build and deploy
-        uses: shalzz/zola-deploy-action@v0.21.0
+        uses: shalzz/zola-deploy-action@master
         env:
+          PAGES_BRANCH: gh-pages
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
