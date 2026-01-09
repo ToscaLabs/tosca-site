@@ -16,8 +16,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      #- name: Add CNAME file
-      # run: echo "toscalabs.org" > themes/tosca-theme/static/CNAME
+      - name: Add CNAME file
+        run: echo "toscalabs.org" > themes/tosca-theme/static/CNAME
 
       - name: Build and deploy
         uses: shalzz/zola-deploy-action@master
