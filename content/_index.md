@@ -36,6 +36,7 @@ relative **pull request** is merged into the main codebase.
 """
 
 [extra.contacts]
+id = "contacts"
 title = "Get In Touch"
 contact_button_text = "Email Us"
 +++

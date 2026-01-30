@@ -31,7 +31,7 @@ description = "Il sito di ToscaLabs"
 # ToscaLabs informative email
 email = "info@toscalabs.org"
 
-# Footer copyright text
+# Footer copyright text in different languages
 copyright_map = { en = "All rights reserved.", it = "Tutti i diritti riservati." }
 
 # GitHub link description in different languages
@@ -45,6 +45,7 @@ nav_items = [
     { name = "Home", prefix = "", url = "/" },
     { name = "Tosca", prefix = "",  url = "/tosca" },
     { name = "About", prefix = "",  url = "/about" },
+    { name = "Blog", prefix = "",  url = "/blog" },
     { name = "Contact Us", prefix = "", url = "/#contacts" },
 ]
 
@@ -52,6 +53,12 @@ nav_items = [
 nav_items_it = [
     { name = "Home", prefix ="/it", url = "/" },
     { name = "Tosca", prefix = "/it", url = "/tosca" },
-    { name = "Chi Siamo", prefix = "/it", url = "/about" },
-    { name = "Contattaci", prefix = "/it", url = "/#contacts" },
+    { name = "Chi Siamo", prefix = "/it", url = "/chi-siamo" },
+    { name = "Blog", prefix = "/it",  url = "/blog" },
+    { name = "Contattaci", prefix = "/it", url = "/#contatti" },
+]
+
+# Taxonomies
+taxonomies = [
+  { name = "tags" }
 ]

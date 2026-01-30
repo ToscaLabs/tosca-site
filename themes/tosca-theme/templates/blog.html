@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+
+  <ul>
+    {% if paginator %}
+      {% for page in paginator.pages %}
+        <li>
+          <a href="{{ page.permalink }}">{{ page.title }}</a>
+          – {{ page.date }}
+        </li>
+      {% endfor %}
+    {% else %}
+      {% for page in section.pages %}
+        <li>
+          <a href="{{ page.permalink }}">{{ page.title }}</a>
+          – {{ page.date }}
+        </li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+
+  {% if paginator %}
+    <nav>
+      {% if paginator.previous %}
+        <a href="{{ paginator.previous }}">← Previous</a>
+      {% endif %}
+      {% if paginator.next %}
+        <a href="{{ paginator.next }}">Next →</a>
+      {% endif %}
+    </nav>
+  {% endif %}
+</section>
+{% endblock content %}

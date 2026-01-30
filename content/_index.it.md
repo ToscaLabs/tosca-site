@@ -4,7 +4,7 @@ template = "index.html"
 [extra.hero]
 title = { first = "Costruiamo", highlight = "Software", second = "Semplici ed Eleganti" }
 subtitle = "Al tuo fianco nell'affrontare le sfide del sociale"
-hero_button = { text = "Su Di Noi", url = "/it/about" }
+hero_button = { text = "Su Di Noi", url = "/it/chi-siamo" }
 
 [extra.services]
 title = "Prodotti & Servizi"
@@ -38,6 +38,7 @@ all'**integrazione** finale nel codice principale.
 """
 
 [extra.contacts]
+id = "contatti"
 title = "Contatti"
 contact_button_text = "Scrivici"
 +++
