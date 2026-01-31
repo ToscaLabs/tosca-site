@@ -36,10 +36,9 @@ combined by adding or removing lines of code, allowing the final software to be
 [[extra.cards]]
 title = "Secure"
 description = """
-Written in <a target="_blank" rel="noopener noreferrer" href="https://rust-lang.org/">Rust</a>,
-a language renowned for its **performance**, **memory management**, and
-**vulnerability prevention**, all features that significantly minimize
-errors during software development.
+Written in [Rust](https://rust-lang.org/), a language renowned for its
+**performance**, **memory management**, and **vulnerability prevention**,
+all features that significantly minimize errors during software development.
 Furthermore, the APIs are subjected to **automated tests** designed to identify
 a wide range of pathological and physiological errors present within the
 framework.

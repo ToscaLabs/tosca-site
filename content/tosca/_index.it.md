@@ -37,10 +37,10 @@ rimuovendo linee di codice, permettendo agli sviluppatori di
 [[extra.cards]]
 title = "Sicuro"
 description = """
-Scritto in <a target="_blank" rel="noopener noreferrer" href="https://rust-lang.org/it/">Rust</a>,
-un linguaggio noto per le **performance**, la gestione della **memoria** e
-la prevenzione delle **vulnerabilità**, tutte caratteristiche
-che riducono notevolmente gli errori durante lo sviluppo software.
+Scritto in [Rust](https://rust-lang.org/it/), un linguaggio noto per le
+**performance**, la gestione della **memoria** e la prevenzione delle
+**vulnerabilità**, tutte caratteristiche che riducono notevolmente gli errori
+durante lo sviluppo software.
 Inoltre, le API vengono sottoposte a **test automatici** per individuare il
 maggior numero di errori patologici e fisiologici presenti nel framework.
 """

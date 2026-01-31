@@ -12,7 +12,7 @@ title = "Products & Services"
 [[extra.cards]]
 title = "Software Development"
 description = """
-Developing software libraries and tools written in the <a target="_blank" rel="noopener noreferrer" href="https://rust-lang.org/">Rust</a> programming language.
+Developing software libraries and tools written in the [Rust](https://rust-lang.org/) programming language.
 
 Specialized in **Firmware**, **Multimedia Solutions**, and **AI Models**, with additional expertise in **Continuous Integration** and **Deployment** systems.
 """

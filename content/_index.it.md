@@ -12,8 +12,8 @@ title = "Prodotti & Servizi"
 [[extra.cards]]
 title = "Sviluppo Software"
 description = """
-Sviluppiamo librerie e software scritti in
-linguaggio <a target="_blank" rel="noopener noreferrer" href="https://rust-lang.org/it/">Rust</a>.
+Sviluppiamo librerie e software scritti in linguaggio
+[Rust](https://rust-lang.org/it/).
 
 Specializzati nella realizzazione di **Firmware**, **Soluzioni Multimediali**, e **Modelli di IA**, con ulteriori competenze nella progettazione di sistemi per l'**Integrazione** e la **Distribuzione Continua**.
 """
