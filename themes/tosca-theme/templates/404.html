@@ -19,15 +19,44 @@
             <h1 class="error-title">404</h1>
             <div class="button-container">
                 {%- for language in config.extra.404_languages %}
-                <button class="button button-primary button-medium-large">
+                <button class="button button-primary button-medium-large modal"
+                        data-description="{{ language.description}}"
+                        data-index="{{ language.index }}"
+                        data-button="{{ language.goto_button }}">
                     {{ language.button }}
                 </button>
                 {%- endfor %}
+            </div>
+            <div class="info-box">
+                <p></p>
+                <a class="button button-primary button-same-width"></a>
             </div>
         </div>
     </section>
   </main>
 
   {{ footer_macro::footer(config=config, lang=lang) }}
+
+  <script type="module">
+      const modals = document.querySelectorAll(".modal");
+        modals.forEach(modal => {
+            modal.addEventListener("click", () => {
+                const description = modal.dataset.description;
+                const index = modal.dataset.index;
+                const button = modal.dataset.button;
+
+                const infoBox = modal.parentElement.parentElement.querySelector('.info-box');
+                const p = infoBox.querySelector("p");
+                const link = infoBox.querySelector("a");
+
+                p.textContent = `${description}`;
+
+                link.href = `${index}`;
+                link.textContent = `${button}`;
+
+                infoBox.classList.toggle('show');
+            });
+        });
+  </script>
 </body>
 </html>

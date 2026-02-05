@@ -633,6 +633,24 @@ section {
     opacity: 0.6;
 }
 
+/* 404 */
+.info-box {
+    margin: 4rem 2rem 0;
+    padding: 2rem;
+    display: none;
+    border: 1px solid var(--motto-text-color);
+    text-align: center;
+}
+
+.info-box p {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.info-box.show {
+    display: block;
+}
+
 /* Footer */
 .footer {
     padding: 3rem 0 1rem;
