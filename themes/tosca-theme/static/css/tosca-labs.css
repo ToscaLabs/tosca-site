@@ -90,6 +90,15 @@ section {
     padding: var(--padding-edges);
 }
 
+.error-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
 .hero {
     padding: 120px 0 40px;
     background: var(--section-odd-background-color);
@@ -127,13 +136,6 @@ section {
     font-weight: bold;
     line-height: 1.3;
     color: var(--motto-text-color);
-}
-
-.unique-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 }
 
 /* Header */
@@ -250,9 +252,10 @@ section {
 /* Button */
 .button-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .button-same-width {
@@ -650,7 +653,6 @@ section {
         font-size: 1.8rem;
     }
 }
-
 
 /* Large tablets in landscape mode */
 @media screen and (max-width: 1024px) {
