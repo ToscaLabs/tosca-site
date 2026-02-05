@@ -37,7 +37,7 @@
             </div>
             {%- endfor -%}
 
-            {% if paginator %}
+            {% if paginator and paginator.number_pagers != 1 %}
             <nav class="paginator">
                 {% if paginator.previous -%}
                 <a href="{{ paginator.previous | safe }}">
