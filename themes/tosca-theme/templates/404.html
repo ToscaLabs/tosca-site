@@ -27,7 +27,7 @@
                 </button>
                 {%- endfor %}
             </div>
-            <div class="info-box">
+            <div class="info-box" data-id=0>
                 <p></p>
                 <a class="button button-primary button-same-width"></a>
             </div>
@@ -38,8 +38,8 @@
   {{ footer_macro::footer(config=config, lang=lang) }}
 
   <script type="module">
-      const modals = document.querySelectorAll(".modal");
-        modals.forEach(modal => {
+        const modals = document.querySelectorAll(".modal");
+        modals.forEach((modal, modalIndex) => {
             modal.addEventListener("click", () => {
                 const description = modal.dataset.description;
                 const index = modal.dataset.index;
@@ -54,7 +54,11 @@
                 link.href = `${index}`;
                 link.textContent = `${button}`;
 
-                infoBox.classList.toggle('show');
+                if (modalIndex == infoBox.dataset.id) {
+                    infoBox.classList.toggle('show');
+                } else {
+                    infoBox.dataset.id = modalIndex;
+                }
             });
         });
   </script>
