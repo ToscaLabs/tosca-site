@@ -6,4 +6,6 @@ template = "blog.html"
 
 [extra]
 read_more = "Leggi di più"
+previous = "Precedente"
+next = "Successiva"
 +++

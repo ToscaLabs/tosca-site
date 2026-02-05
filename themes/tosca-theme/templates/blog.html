@@ -22,15 +22,15 @@
             {% if paginator %}
             <div class="paginator">
                 {% if paginator.previous -%}
-                <a href="{{ paginator.previous | safe }}">« Previous</a>
+                <a href="{{ paginator.previous | safe }}">« {{ section.extra.previous }}</a>
                 {% else -%}
-                <span class="disabled">« Previous</span>
+                <span class="disabled">« {{ section.extra.previous }}</span>
                 {% endif -%}
                 — <strong>{{ paginator.current_index }}</strong> —
                 {% if paginator.next -%}
-                <a href="{{ paginator.next | safe }}">Next »</a>
+                <a href="{{ paginator.next | safe }}">{{ section.extra.next }} »</a>
                 {%- else -%}
-                <span class="disabled">Next »</span>
+                <span class="disabled">{{ section.extra.next }} »</span>
                 {% endif %}
            </div>
            {%- endif %}
