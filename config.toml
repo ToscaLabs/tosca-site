@@ -93,6 +93,12 @@ nav_items_it = [
     { name = "Contattaci", prefix = "/it", url = "/#contatti" },
 ]
 
+# Data in different languages for the 404 page
+404_languages = [
+   { index = "/", button = "English Version", description = "The requested page does not exist", goto_button = "Back Home" },
+   { lang = "/it", button = "Versione Italiana", description = "La pagina richiesta non esiste",  goto_button = "Torna alla Home" },
+]
+
 # Taxonomies
 taxonomies = [
   { name = "tags" }

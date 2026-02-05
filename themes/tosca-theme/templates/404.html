@@ -14,9 +14,16 @@
   {{ header_macro::header(config=config, lang=lang, permalink="") }}
 
   <main>
-    <section class="hero unique-section">
+    <section class="unique-section">
         <div class="container">
             <h1 class="error-title">404</h1>
+            <div class="button-container">
+                {%- for language in config.extra.404_languages %}
+                <button class="button button-primary button-medium-large">
+                    {{ language.button }}
+                </button>
+                {%- endfor %}
+            </div>
         </div>
     </section>
   </main>
