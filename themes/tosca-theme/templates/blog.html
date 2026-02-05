@@ -1,35 +1,39 @@
 {% extends "base.html" %}
 
-{% block content %}
-<section>
+{%- block content -%}
+    <section>
+        <div class="container">
+            {% if paginator -%}
+               {%- set pages = paginator.pages -%}
+            {%- else -%}
+               {%- set pages = section.pages -%}
+            {%- endif -%}
+            {%- for page in pages -%}
+            <div class="blog-post">
+                <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+                <div class="date">{{ page.date }}</div>
+                <div class="excerpt">
+                  {{ page.description }}
+                </div>
+                <a href="{{ page.permalink | safe }}">{{ section.extra.read_more }} →</a>
+            </div>
+            {%- endfor -%}
 
-  <ul>
-    {% if paginator %}
-      {% for page in paginator.pages %}
-        <li>
-          <a href="{{ page.permalink }}">{{ page.title }}</a>
-          – {{ page.date }}
-        </li>
-      {% endfor %}
-    {% else %}
-      {% for page in section.pages %}
-        <li>
-          <a href="{{ page.permalink }}">{{ page.title }}</a>
-          – {{ page.date }}
-        </li>
-      {% endfor %}
-    {% endif %}
-  </ul>
-
-  {% if paginator %}
-    <nav>
-      {% if paginator.previous %}
-        <a href="{{ paginator.previous }}">← Previous</a>
-      {% endif %}
-      {% if paginator.next %}
-        <a href="{{ paginator.next }}">Next →</a>
-      {% endif %}
-    </nav>
-  {% endif %}
-</section>
-{% endblock content %}
+            {% if paginator %}
+            <div class="paginator">
+                {% if paginator.previous -%}
+                <a href="{{ paginator.previous | safe }}">« Previous</a>
+                {% else -%}
+                <span class="disabled">« Previous</span>
+                {% endif -%}
+                — <strong>{{ paginator.current_index }}</strong> —
+                {% if paginator.next -%}
+                <a href="{{ paginator.next | safe }}">Next »</a>
+                {%- else -%}
+                <span class="disabled">Next »</span>
+                {% endif %}
+           </div>
+           {%- endif %}
+        </div>
+    </section>
+{%- endblock %}
