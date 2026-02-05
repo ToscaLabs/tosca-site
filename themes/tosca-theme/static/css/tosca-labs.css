@@ -36,6 +36,11 @@
     --card-shadow: rgba(20, 20, 20, 0.2); /* Card shadow */
     --image-shadow: rgb(107, 114, 128, 0.6); /* About image shadow */
     --envelope-svg-color: rgb(16, 40, 56); /* Envelope svg color */
+
+    --blog-post-text-color: rgb(119, 119, 119); /* Blog post text color */
+    --paginator-border-color: rgb(221, 221, 221); /* Paginator border color */
+    --paginator-background-color: rgb(249, 249, 249); /* Paginator background color */
+    --paginator-link-color: rgb(16, 70, 100); /* Paginator link color */
 }
 
 /* Reset rules applied to all page elements */
@@ -320,13 +325,12 @@ section {
 
 .card a {
     text-decoration: none;
-    color: var(--menu-background-color);
-    filter: brightness(0.95);
-    font-weight: 600;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--menu-background-color) 90%, black);
 }
 
 .card a:hover {
-    filter: brightness(1);
+    color: var(--motto-text-color);
 }
 
 .card-icon {
@@ -359,13 +363,12 @@ section {
 
 .info-card a {
     text-decoration: none;
-    color: var(--menu-background-color);
-    filter: brightness(0.95);
     font-weight: 500;
+    color: color-mix(in srgb, var(--menu-background-color) 90%, black);
 }
 
 .info-card a:hover {
-    filter: brightness(1);
+    color: var(--motto-text-color);
 }
 
 /* Contacts */
@@ -534,9 +537,8 @@ section {
 }
 
 .blog-post {
-    margin-left: 2rem;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
+    margin: 0 0 2rem 2rem;
+    color: var(--blog-post-text-color);
 }
 
 .blog-post h2 {
@@ -558,7 +560,6 @@ section {
 .blog-post .date {
     margin-bottom: 1rem;
     font-size: 1rem;
-    color: #777;
 }
 
 .blog-post .excerpt {
@@ -575,10 +576,47 @@ section {
   color: var(--motto-text-color);
 }
 
+.paginator {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin: 3rem 2rem 0 2rem;
+   padding: 1rem 2rem;
+   border-top: 1px solid var(--paginator-border-color);
+   border-bottom: 1px solid var(--paginator-border-color);
+   background: var(--paginator-background-color);
+   font-size: 1rem;
+}
+
+.paginator a {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--paginator-link-color);
+}
+
+.paginator a:hover {
+  color: var(--motto-text-color);
+}
+
+.paginator .page-info {
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+  color: rgb(51, 51, 51);
+}
+
+.paginator .arrow {
+  margin: 0 0.2rem;
+}
+
+.paginator .disabled {
+    opacity: 0.6;
+}
+
 /* Footer */
 .footer {
     padding: 3rem 0 1rem;
-    background-color: var(--footer-background-color);
+    background: var(--footer-background-color);
 }
 
 .footer-info {

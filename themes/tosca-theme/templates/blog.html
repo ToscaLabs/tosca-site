@@ -38,19 +38,31 @@
             {%- endfor -%}
 
             {% if paginator %}
-            <div class="paginator">
+            <nav class="paginator">
                 {% if paginator.previous -%}
-                <a href="{{ paginator.previous | safe }}">« {{ section.extra.previous }}</a>
+                <a href="{{ paginator.previous | safe }}">
+                    <span class=arrow>&lt;</span>
+                    {{ section.extra.previous }}
+                </a>
                 {% else -%}
-                <span class="disabled">« {{ section.extra.previous }}</span>
+                <span class="disabled">
+                    <span class="arrow">&lt;</span>
+                    {{ section.extra.previous }}
+                </span>
                 {% endif -%}
-                — <strong>{{ paginator.current_index }}</strong> —
+                <span class="page-info">{{ paginator.current_index }} {{ section.extra.of }} {{ paginator.number_pagers }}</span>
                 {% if paginator.next -%}
-                <a href="{{ paginator.next | safe }}">{{ section.extra.next }} »</a>
+                <a href="{{ paginator.next | safe }}">
+                    {{ section.extra.next }}
+                    <span class="arrow">&gt;</span>
+                </a>
                 {%- else -%}
-                <span class="disabled">{{ section.extra.next }} »</span>
+                <span class="disabled">
+                    {{ section.extra.next }}
+                    <span class="arrow">&gt;</span>
+                </span>
                 {% endif %}
-           </div>
+           </nav>
            {%- endif %}
         </div>
     </section>

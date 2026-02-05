@@ -8,4 +8,5 @@ template = "blog.html"
 read_more = "Leggi di più"
 previous = "Precedente"
 next = "Successiva"
+of = "di"
 +++
