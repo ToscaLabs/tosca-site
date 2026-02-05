@@ -526,6 +526,55 @@ section {
     opacity: 0.7;
 }
 
+
+/* Blog */
+.blog {
+   padding: 7rem 0 2.5rem;
+   height: 100vh;
+}
+
+.blog-post {
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+.blog-post h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.125;
+}
+
+.blog-post h2 a {
+    text-decoration: none;
+    color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+}
+
+.blog-post h2 a:hover {
+    color: var(--motto-text-color);
+}
+
+.blog-post .date {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #777;
+}
+
+.blog-post .excerpt {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.blog-post .read-more {
+  text-decoration: underline;
+  color: var(--menu-text-color);
+}
+
+.blog-post .read-more:hover {
+  color: var(--motto-text-color);
+}
+
 /* Footer */
 .footer {
     padding: 3rem 0 1rem;
