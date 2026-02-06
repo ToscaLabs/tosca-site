@@ -1,47 +1,115 @@
 :root {
-    /* == Spacing == */
+    /* == Global Spacing ==*/
     --max-width: 1200px; /* A size that allows the page content to be readable and centered even on wider screens */
     --horizontally-centered-margins: 0 auto; /* Centers the container horizontally */
     --padding-edges: 0 20px; /* Keeps the content from touching the browser edges on small screens */
 
-    /* == Variables related to header size and used to compute menu top position on mobile == */
-    --header-height: 60px; /* Header height */
-    --header-border-size: 2px; /* Header border size */
+    /* == Header == */
+    --header-height: 60px;
+    --header-border-size: 2px;
 
-    /* == Variables related to navbar == */
-    --logo-height: 40px; /* Logo height size */
-    --navbar-vertical-padding: 8px; /* Navbar vertical padding */
+    /* == Menu == */
+    --menu-logo-height: 40px;
+    --menu-vertical-padding: 8px;
     --menu-voices-gap: 32px; /* Gap between menu voices */
     --menu-offset: 8px; /* Slight offset to distance all voices from controllers */
 
     /* == Colors == */
-    --body-background-color: rgb(255, 255, 255); /* Body background */
-    --menu-background-color: rgb(165, 219, 165); /* Menu background */
-    --menu-background-mobile-color: rgb(255, 255, 255); /* Menu background on mobile */
-    --section-odd-background-color: rgb(255, 255, 255); /* Section odd background color */
-    --section-even-background-color: rgb(239, 243, 239); /* Section even background color */
-    --card-odd-background-color: rgb(249, 249, 249); /* Card odd background color */
-    --card-even-background-color: rgb(255, 255, 255); /* Card even background color */
-    --footer-background-color: rgb(16, 32, 56); /* Footer background color */
-
-    --body-text-color: rgb(85, 85, 85); /* Body text color */
-    --menu-text-color: rgb(30, 41, 57); /* Menu text color */
-    --card-text-color: rgb(85, 85, 85); /* Card text color */
-    --motto-text-color: rgb(241, 139, 106); /* Motto text color */
-    --footer-text-color: rgb(204, 210, 213); /* Footer text color */
-
-    --header-border-color: rgb(229, 229, 229); /* Header border */
-    --grid-border-even-color: rgb(227, 223, 231); /* Grid border color on even sections */
-
-    --card-shadow: rgba(20, 20, 20, 0.2); /* Card shadow */
-    --image-shadow: rgb(107, 114, 128, 0.6); /* About image shadow */
-    --envelope-svg-color: rgb(16, 40, 56); /* Envelope svg color */
-
-    --blog-post-text-color: rgb(119, 119, 119); /* Blog post text color */
-    --paginator-border-color: rgb(221, 221, 221); /* Paginator border color */
-    --paginator-background-color: rgb(249, 249, 249); /* Paginator background color */
-    --paginator-link-color: rgb(16, 70, 100); /* Paginator link color */
-    --paginator-page-info-color: rgb(51, 51, 51); /* Paginator page info color */
+    /*
+    /*
+    /* Body */
+    --body-background-color: rgb(255, 255, 255);
+    --body-text-color: rgb(85, 85, 85);
+    /*
+    /*
+    /* Link */
+    --link-text-color: rgb(149, 197, 149);
+    --link-text-hover-color: rgb(241, 139, 106);
+    /*
+    /*
+    /* Code */
+    --code-background-color: rgb(244, 244, 244);
+    --code-text-color: rgb(254, 78, 61);
+    /*
+    /*
+    /* Hero */
+    --hero-text-color: rgb(30, 41, 57);
+    --hero-highlight-color: rgb(165, 219, 165);
+    /*
+    /*
+    /* 404 */
+    --404-title-color: rgb(241, 139, 106);
+    --404-info-box-border-color: rgb(241, 139, 106);
+    /*
+    /*
+    /* Buttons */
+    --button-primary-background-color: rgb(165, 219, 165);
+    --button-primary-text-color: rgb(30, 41, 57);
+    /*
+    /*
+    /* Header */
+    --header-border-color: rgb(229, 229, 229);
+    /*
+    /*
+    /* Menu */
+    --menu-background-color: rgb(165, 219, 165);
+    --menu-background-mobile-color: rgb(255, 255, 255);
+    --menu-text-color: rgb(30, 41, 57);
+    /*
+    /*
+    /* Section */
+    --section-odd-background-color: rgb(255, 255, 255);
+    --section-even-background-color: rgb(239, 243, 239);
+    --section-title-color: rgb(30, 41, 57);
+    /*
+    /*
+    /* Card */
+    --card-odd-background-color: rgb(249, 249, 249);
+    --card-even-background-color: rgb(255, 255, 255);
+    --card-border-color: rgb(227, 223, 231);
+    --card-icon-color: rgb(165, 219, 165);
+    --card-title-color: rgb(30, 41, 57);
+    --card-text-color: rgb(85, 85, 85);
+    --card-odd-shadow-color: rgba(10, 10, 10, 0.2);
+    --card-even-shadow-color: rgba(20, 20, 20, 0.2);
+    /*
+    /*
+    /* Page properties */
+    --motto-text-color: rgb(241, 139, 106);
+    --image-panel-shadow-color: rgb(107, 114, 128, 0.6);
+    --email-envelope-svg-color: rgb(16, 40, 56);
+    --email-text-color: rgb(30, 41, 57);
+    /*
+    /*
+    /* Blog */
+    --blog-post-text-color: rgb(85, 85, 85);
+    --blog-read-more-text-color: rgb(30, 41, 57);
+    --blog-read-more-text-hover-color: rgb(241, 139, 106);
+    /*
+    /* Blog Posts Paginator */
+    --blog-paginator-border-color: rgb(221, 221, 221);
+    --blog-paginator-background-color: rgb(249, 249, 249);
+    --blog-paginator-link-color: rgb(16, 70, 100);
+    --blog-paginator-link-hover-color: rgb(241, 139, 106);
+    --blog-paginator-page-info-color: rgb(51, 51, 51);
+    /*
+    /* Blog Posts */
+    --blog-post-h1-color: rgb(149, 197, 149);
+    --blog-post-h2-color: rgb(30, 41, 57);
+    --blog-post-h3-color: rgb(30, 41, 57);
+    --blog-post-table-th-background-color: rgb(245, 245, 245);
+    --blog-post-table-cell-border-color: rgb(219, 219, 219);
+    --blog-post-table-tr-hover-color: rgb(246, 246, 246);
+    --blog-post-hr-background-color: rgb(245, 245, 245);
+    --blog-post-hr-border-color: rgb(219, 219, 219);
+    --blog-post-footer-text-color: rgb(30, 41, 57);
+    --blog-post-footer-text-hover-color: rgb(241, 139, 106);
+    --blog-post-giallo-code-background-color: rgb(48, 54, 61);
+    /*
+    /*
+    /* Footer */
+    --footer-background-color: rgb(16, 32, 56);
+    --footer-text-color: rgb(204, 210, 213);
 }
 
 /* Reset rules applied to all page elements */
@@ -84,6 +152,19 @@ article {
     padding: 6rem 0 2.5rem;
 }
 
+p code,
+h1 code,
+h2 code,
+h3 code {
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  background: var(--code-background-color);
+  font-size: .875em;
+  font-weight: 400;
+  font-family: 'Courier New', monospace;
+  color: var(--code-text-color);
+}
+
 /* Spacing classes */
 .text-centered {
     text-align: center;
@@ -107,7 +188,7 @@ article {
 .hero {
     padding: 120px 0 40px;
     background: var(--section-odd-background-color);
-    color: var(--menu-text-color);
+    color: var(--hero-text-color);
 }
 
 .hero p {
@@ -124,7 +205,7 @@ article {
 }
 
 .hero-highlight {
-    color: var(--menu-background-color);
+    color: var(--hero-highlight-color);
 }
 
 .section-title {
@@ -132,7 +213,7 @@ article {
     text-align: center;
     font-size: 2.5rem;
     font-weight: bold;
-    color: var(--menu-text-color);
+    color: var(--section-title-color);
 }
 
 .error-title {
@@ -140,7 +221,7 @@ article {
     font-size: 13rem;
     font-weight: bold;
     line-height: 1.3;
-    color: var(--motto-text-color);
+    color: var(--404-title-color);
 }
 
 /* Header */
@@ -155,7 +236,7 @@ article {
 }
 
 .navbar {
-    padding: var(--navbar-vertical-padding) 0;
+    padding: var(--menu-vertical-padding) 0;
 }
 
 .nav-container {
@@ -171,7 +252,7 @@ article {
 .nav-left .logo {
     max-width: 100%;
     width: auto;
-    height: var(--logo-height);
+    height: var(--menu-logo-height);
     /* Force the logo to align at the top of its parent container <a> */
     vertical-align: top;
     transition: opacity .3s ease;
@@ -263,10 +344,6 @@ article {
     gap: 15px;
 }
 
-.button-same-width {
-    width: 200px;
-}
-
 .button {
     display: inline-block;
     padding: 8px 16px;
@@ -278,14 +355,18 @@ article {
     transition: opacity .2s ease;
 }
 
+.button-same-width {
+    width: 200px;
+}
+
 .button-medium-large {
     padding: 8px 20px;
     font-size: 1.5rem;
 }
 
 .button-primary {
-    background-color: var(--menu-background-color);
-    color: var(--menu-text-color);
+    background-color: var(--button-primary-background-color);
+    color: var(--button-primary-text-color);
 }
 
 .button-primary:hover {
@@ -307,22 +388,22 @@ article {
 
 .card-odd-color {
     background-color: var(--card-odd-background-color);
-    border: 2px solid var(--grid-border-even-color);
+    border: 2px solid var(--card-border-color);
     transition: all .1s ease;
 }
 
 .card-odd-color:hover {
-    box-shadow: 0 20px 20px rgba(10, 10, 10, 0.2);
+    box-shadow: 0 20px 20px var(--card-odd-shadow-color);
 }
 
 .card-even-color {
     background-color: var(--card-even-background-color);
-    border: 1px solid var(--grid-border-even-color);
+    border: 1px solid var(--card-border-color);
     transition: all .2s ease;
 }
 
 .card-even-color:hover {
-    box-shadow: 0 20px 20px var(--card-shadow);
+    box-shadow: 0 20px 20px var(--card-even-shadow-color);
 }
 
 .card {
@@ -338,7 +419,7 @@ article {
     margin-bottom: 1rem;
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--menu-text-color);
+    color: var(--card-title-color);
 }
 
 .card p {
@@ -352,11 +433,11 @@ article {
 .card a {
     text-decoration: none;
     font-weight: 500;
-    color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+    color: var(--link-text-color);
 }
 
 .card a:hover {
-    color: var(--motto-text-color);
+    color: var(--link-text-hover-color);
 }
 
 .card-icon {
@@ -365,7 +446,7 @@ article {
     margin-bottom: 1rem;
     /* A workaround to make the leaf appear horizontally centered */
     padding-left: 1rem;
-    color: var(--menu-background-color);
+    color: var(--card-icon-color);
 }
 
 .info-card {
@@ -377,7 +458,7 @@ article {
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--menu-text-color);
+    color: var(--card-title-color);
 }
 
 .info-card p {
@@ -390,11 +471,11 @@ article {
 .info-card a {
     text-decoration: none;
     font-weight: 500;
-    color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+    color: var(--link-text-color);
 }
 
 .info-card a:hover {
-    color: var(--motto-text-color);
+    color: var(--link-text-hover-color);
 }
 
 /* Contacts */
@@ -412,13 +493,13 @@ article {
     width: 100%;
     height: 3.4rem;
     margin: var(--horizontally-centered-margins) 12px;
-    color: var(--envelope-svg-color);
+    color: var(--email-envelope-svg-color);
 }
 
 .email-text {
    margin: var(--horizontally-centered-margins) 30px;
    font-weight: bold;
-   color: var(--menu-text-color);
+   color: var(--email-text-color);
 }
 
 /* About page */
@@ -481,7 +562,7 @@ article {
 .image-panel img {
     width: 420px;
     height: 420px;
-    box-shadow: 0 10px 15px -3px var(--image-shadow), 0 4px 6px -4px var(--image-shadow);
+    box-shadow: 0 10px 15px -3px var(--image-panel-shadow-color), 0 4px 6px -4px var(--image-panel-shadow-color);
 }
 
 .name-panel {
@@ -556,6 +637,7 @@ article {
 }
 
 /* Blog */
+
 .blog {
    padding: 7rem 0 2.5rem;
 }
@@ -574,11 +656,11 @@ article {
 
 .blog-post h2 a {
     text-decoration: none;
-    color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+    color: var(--link-text-color);
 }
 
 .blog-post h2 a:hover {
-    color: var(--motto-text-color);
+    color: var(--link-text-hover-color);
 }
 
 .blog-post .date {
@@ -593,11 +675,11 @@ article {
 
 .blog-post .read-more {
   text-decoration: underline;
-  color: var(--menu-text-color);
+  color: var(--blog-read-more-text-color);
 }
 
 .blog-post .read-more:hover {
-  color: var(--motto-text-color);
+  color: var(--blog-read-more-text-hover-color);
 }
 
 .paginator {
@@ -606,27 +688,27 @@ article {
    justify-content: space-between;
    margin: 3rem 2rem 0 2rem;
    padding: 1rem 2rem;
-   border-top: 1px solid var(--paginator-border-color);
-   border-bottom: 1px solid var(--paginator-border-color);
-   background: var(--paginator-background-color);
+   border-top: 1px solid var(--blog-paginator-border-color);
+   border-bottom: 1px solid var(--blog-paginator-border-color);
+   background: var(--blog-paginator-background-color);
    font-size: 1rem;
 }
 
 .paginator a {
   text-decoration: none;
   font-weight: 500;
-  color: var(--paginator-link-color);
+  color: var(--blog-paginator-link-color);
 }
 
 .paginator a:hover {
-  color: var(--motto-text-color);
+  color: var(--blog-paginator-link-hover);
 }
 
 .paginator .page-info {
   flex: 1;
   text-align: center;
   font-weight: 500;
-  color: var(--paginator-page-info-color);
+  color: var(--blog-paginator-page-info-color);
 }
 
 .paginator .arrow {
@@ -639,6 +721,7 @@ article {
 
 .post {
   font-size: 1rem;
+  color: var(--blog-post-text-color);
 }
 
 .post-body {
@@ -655,38 +738,25 @@ article {
   margin-bottom: 0.5rem;
   font-size: 2.5rem;
   font-weight: 700;
-  color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+  color: var(--blog-post-h1-color);
 }
 
 .post-content h2 {
   margin: 2rem 0 1rem 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--menu-text-color);
+  color: var(--blog-post-h2-color);
 }
 
 .post-content h3 {
   margin: 1.5rem 0 0.75rem 0;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--menu-text-color);
+  color: var(--blog-post-h3-color);
 }
 
 .post-content p {
   margin-bottom: 1rem;
-}
-
-.post-content p code,
-.post-content h1 code,
-.post-content h2 code,
-.post-content h3 code {
-  padding: 0.2rem 0.4rem;
-  border-radius: 3px;
-  background-color: #f4f4f4;
-  font-size: .875em;
-  font-weight: 400;
-  font-family: 'Courier New', monospace;
-  color: rgb(254, 78, 61);
 }
 
 .post-content ul {
@@ -707,37 +777,37 @@ article {
 
 .post-content table th {
   padding: 0.75rem;
-  border: 1px solid #dbdbdb;
-  background-color: #f5f5f5;
+  background: var(--blog-post-table-th-background-color);
+  border: 1px solid var(--blog-post-table-cell-border-color);
   font-weight: 600;
   text-align: left;
 }
 
 .post-content table td {
   padding: 0.75rem;
-  border: 1px solid #dbdbdb;
+  border: 1px solid var(--blog-post-table-cell-border-color);
 }
 
 .post-content table tr:hover {
-  background: #f6f6f6;
+  background: var(--blog-post-table-tr-hover-color);
 }
 
 .post-content hr {
   display: block;
   margin: 2rem 0;
+  background: var(--blog-post-hr-background-color);
   border: none;
-  border-top: 1px solid #dbdbdb;
-  background-color: #f5f5f5;
+  border-top: 1px solid var(--blog-post-hr-border-color);
 }
 
 .post-content a {
     text-decoration: none;
     font-weight: 600;
-    color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+    color: var(--link-text-color);
 }
 
 .post-content a:hover {
-    color: var(--motto-text-color);
+    color: var(--link-text-hover-color);
 }
 
 .post-content strong {
@@ -758,11 +828,11 @@ article {
 .post-other-languages a {
    text-decoration: none;
    font-weight: 600;
-   color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+   color: var(--link-text-color);
 }
 
 .post-other-languages a:hover {
-  color: var(--motto-text-color);
+  color: var(--link-text-hover-color);
 }
 
 .post-footer {
@@ -772,11 +842,11 @@ article {
 .post-footer a {
   text-decoration: underline;
   font-weight: 500;
-  color: var(--menu-text-color);
+  color: var(--blog-post-footer-text-color);
 }
 
 .post-footer a:hover {
-  color: var(--motto-text-color);
+  color: var(--blog-post-footer-text-hover-color);
 }
 
 .giallo {
@@ -784,7 +854,7 @@ article {
   padding: 1rem;
   border-radius: 5px;
   overflow-x: auto;
-  background-color: #30363d !important;
+  background: var(--blog-post-giallo-code-background-color) !important;
 }
 
 .giallo-l {
@@ -808,7 +878,7 @@ article {
     margin: 4rem 2rem 0;
     padding: 2rem;
     display: none;
-    border: 1px solid var(--motto-text-color);
+    border: 1px solid var(--404-info-box-border-color);
     text-align: center;
 }
 

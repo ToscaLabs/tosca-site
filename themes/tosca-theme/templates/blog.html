@@ -19,7 +19,7 @@
             {%- endif -%}
             {%- for page in pages -%}
             <div class="blog-post">
-                <h2><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h2>
+                <h2><a href="{{ page.permalink | safe }}">{{ page.title | markdown(inline=true) | safe }}</a></h2>
                 <div class="date">
                     {% if lang == "it" -%}
                         {% set month_index = page.date | date(format="%m") | int - 1 %}
