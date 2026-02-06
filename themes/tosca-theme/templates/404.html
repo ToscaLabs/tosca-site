@@ -41,23 +41,31 @@
         const modals = document.querySelectorAll(".modal");
         modals.forEach((modal, modalIndex) => {
             modal.addEventListener("click", () => {
+                const id = String(modalIndex);
+
                 const description = modal.dataset.description;
                 const index = modal.dataset.index;
                 const button = modal.dataset.button;
 
                 const infoBox = modal.parentElement.parentElement.querySelector('.info-box');
-                const p = infoBox.querySelector("p");
-                const link = infoBox.querySelector("a");
+                const isVisible = infoBox.classList.contains('show');
+
+                const p = infoBox.querySelector('p');
+                const link = infoBox.querySelector('a');
 
                 p.textContent = `${description}`;
 
                 link.href = `${index}`;
                 link.textContent = `${button}`;
 
-                if (modalIndex == infoBox.dataset.id) {
-                    infoBox.classList.toggle('show');
+                if (!isVisible) {
+                    infoBox.classList.add('show');
+                }
+
+                if (isVisible && infoBox.dataset.id === id) {
+                    infoBox.classList.remove('show');
                 } else {
-                    infoBox.dataset.id = modalIndex;
+                    infoBox.dataset.id = id;
                 }
             });
         });
