@@ -50,7 +50,7 @@ error_on_missing_language = true
 # Use CSS classes.
 style = "inline"
 # Use dark theme to highlight code.
-theme = "github-light"
+theme = "github-dark"
 
 # Section to configure specific settings for the Italian language
 [languages.it]

@@ -1,13 +1,13 @@
 +++
 template = "post.html"
 
-title = "Tosca is born!"
+title = "Tosca is born `here`!"
 description = "The first post about tosca"
 date = 2026-02-05
 tags = ["rust", "blog", "tosca"]
 
 [extra.languages]
-message = "This post can also be read in"
+message = "This post can also be read in "
 translations = [
   { path = "/it/blog/nascita-di-tosca", name = "Italian" }
 ]
@@ -20,9 +20,23 @@ translations = [
 brew install zola
 ```
 
+- [x] One
+- [ ] Two
+
+- One
+- Two
+
 See [Zola installation guide](https://www.getzola.org/documentation/getting-started/installation/) for other systems.
 
 ## Create Site
+
+| ID  | Name      | Age | City       | Status    |
+|-----|-----------|-----|------------|-----------|
+| 1   | Alice     | 25  | New York   | Active    |
+| 2   | Bob       | 30  | London     | Inactive  |
+| 3   | Charlie   | 22  | Paris      | Active    |
+| 4   | Diana     | 28  | Tokyo      | Pending   |
+| 5   | Edward    | 35  | Sydney     | Active    |
 
 ```bash
 zola init your-docs

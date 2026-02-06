@@ -7,7 +7,7 @@ date = 2026-02-05
 tags = ["rust", "blog", "tosca"]
 
 [extra.languages]
-message = "Questo articolo può anche essere letto in"
+message = "Questo articolo può anche essere letto in "
 translations = [
   { path = "/blog/tosca-is-born", name = "Inglese" }
 ]

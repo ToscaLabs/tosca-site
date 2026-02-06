@@ -41,6 +41,7 @@
     --paginator-border-color: rgb(221, 221, 221); /* Paginator border color */
     --paginator-background-color: rgb(249, 249, 249); /* Paginator background color */
     --paginator-link-color: rgb(16, 70, 100); /* Paginator link color */
+    --paginator-page-info-color: rgb(51, 51, 51); /* Paginator page info color */
 }
 
 /* Reset rules applied to all page elements */
@@ -76,7 +77,11 @@ footer {
 }
 
 section {
-    padding: 80px 0;
+    padding: 5rem 0;
+}
+
+article {
+    padding: 6rem 0 2.5rem;
 }
 
 /* Spacing classes */
@@ -550,7 +555,6 @@ section {
     opacity: 0.7;
 }
 
-
 /* Blog */
 .blog {
    padding: 7rem 0 2.5rem;
@@ -622,7 +626,7 @@ section {
   flex: 1;
   text-align: center;
   font-weight: 500;
-  color: rgb(51, 51, 51);
+  color: var(--paginator-page-info-color);
 }
 
 .paginator .arrow {
@@ -630,7 +634,171 @@ section {
 }
 
 .paginator .disabled {
-    opacity: 0.6;
+  opacity: 0.6;
+}
+
+.post {
+  font-size: 1rem;
+}
+
+.post-body {
+  padding: 1.25em 1.5em;
+}
+
+.post-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.post-content h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+}
+
+.post-content h2 {
+  margin: 2rem 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--menu-text-color);
+}
+
+.post-content h3 {
+  margin: 1.5rem 0 0.75rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--menu-text-color);
+}
+
+.post-content p {
+  margin-bottom: 1rem;
+}
+
+.post-content p code,
+.post-content h1 code {
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  background-color: #f4f4f4;
+  font-size: .875em;
+  font-weight: 400;
+  font-family: 'Courier New', monospace;
+  color: rgb(254, 78, 61);
+}
+
+.post-content ul {
+  margin: 0 0 1rem 2rem;
+  list-style-type: disc;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem;
+}
+
+.post-content table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.post-content table th {
+  padding: 0.75rem;
+  border: 1px solid #dbdbdb;
+  background-color: #f5f5f5;
+  font-weight: 600;
+  text-align: left;
+}
+
+.post-content table td {
+  padding: 0.75rem;
+  border: 1px solid #dbdbdb;
+}
+
+.post-content table tr:hover {
+  background: #f6f6f6;
+}
+
+.post-content hr {
+  display: block;
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid #dbdbdb;
+  background-color: #f5f5f5;
+}
+
+.post-content a {
+    text-decoration: none;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+}
+
+.post-content a:hover {
+    color: var(--motto-text-color);
+}
+
+.post-content strong {
+  font-weight: 600;
+}
+
+.post-metadata {
+   margin-bottom: 2rem;
+   padding-left: 0.2rem;
+   font-size: 1rem;
+   color: var(--blog-post-text-color);
+}
+
+.post-other-languages {
+    font-size: 1.1rem;
+}
+
+.post-other-languages a {
+   text-decoration: none;
+   font-weight: 600;
+   color: color-mix(in srgb, var(--menu-background-color) 90%, black);
+}
+
+.post-other-languages a:hover {
+  color: var(--motto-text-color);
+}
+
+.post-footer {
+  text-align: center;
+}
+
+.post-footer a {
+  text-decoration: underline;
+  font-weight: 500;
+  color: var(--menu-text-color);
+}
+
+.post-footer a:hover {
+  color: var(--motto-text-color);
+}
+
+.giallo {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  background-color: #30363d !important;
+}
+
+.giallo-l {
+    display: inline-block;
+    width: 100%;
+    min-height: 1lh;
+}
+
+.giallo-ln {
+    display: inline-block;
+    user-select: none;
+    min-width: 3ch;
+    margin-right: 0.4em;
+    padding: 0.4em;
+    text-align: right;
+    opacity: 0.8;
 }
 
 /* 404 */
@@ -801,7 +969,7 @@ section {
     }
 
     .container {
-        padding: 0 15px;
+        padding: 0 1.5em;
     }
 
     .hero-title {

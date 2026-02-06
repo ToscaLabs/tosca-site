@@ -9,4 +9,5 @@ read_more = "Read more"
 previous = "Previous"
 next = "Next"
 of = "of"
+back_to_blog = "Back to Posts"
 +++
