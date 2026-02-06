@@ -13,7 +13,6 @@
     <article class="post">
       <div class="container post-body">
           <div class="post-content">
-              {% set content = page.title | safe %}
               <h1>{{ page.title | markdown(inline=true) | safe }}</h1>
               <div class="post-metadata">
                   <span>

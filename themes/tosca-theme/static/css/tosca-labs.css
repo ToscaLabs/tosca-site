@@ -677,7 +677,9 @@ article {
 }
 
 .post-content p code,
-.post-content h1 code {
+.post-content h1 code,
+.post-content h2 code,
+.post-content h3 code {
   padding: 0.2rem 0.4rem;
   border-radius: 3px;
   background-color: #f4f4f4;

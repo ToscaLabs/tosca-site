@@ -15,7 +15,7 @@
   <meta property="og:url" content="{{ current_url | safe }}" />
   <meta property="og:type" content="website" />
 
-  <title>{{ title }}</title>
+  <title>{{ title | markdown | striptags | trim }}</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="{{ get_url(path='icons/favicon-512x512.svg') | safe }}" />
