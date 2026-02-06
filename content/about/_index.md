@@ -1,4 +1,5 @@
 +++
+title = "About"
 template = "about.html"
 
 [extra.hero]
@@ -33,7 +34,7 @@ One day, an unnamed little creature appeared out of nowhere, offering to
 accompany us on our journey. Filled with joy, our new friend chose to embrace
 the name Tosca.
 
-The suffix _Labs_ in the tech world conveys a sense of innovation, a research 
+The suffix _Labs_ in the tech world conveys a sense of innovation, a research
 and development mindset, and a constant pursuit of new ideas.
 
 In the picture, we can see _Tosca_ in great shape.

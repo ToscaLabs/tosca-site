@@ -1,4 +1,5 @@
 +++
+title = "Chi Siamo"
 template = "about.html"
 
 [extra.hero]

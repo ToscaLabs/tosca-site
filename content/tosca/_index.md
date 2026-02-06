@@ -1,4 +1,5 @@
 +++
+title = "Tosca"
 template = "tosca.html"
 
 [extra.hero]
