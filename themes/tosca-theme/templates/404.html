@@ -53,10 +53,10 @@
                 const p = infoBox.querySelector('p');
                 const link = infoBox.querySelector('a');
 
-                p.textContent = `${description}`;
+                p.textContent = description;
 
-                link.href = `${index}`;
-                link.textContent = `${button}`;
+                link.href = index;
+                link.textContent = button;
 
                 if (!isVisible) {
                     infoBox.classList.add('show');
