@@ -16,6 +16,7 @@
 
   <header class="header">
     <nav class="navbar">
+        {%- if permalink != "" %}
         <div class="nav-container">
             <div class="nav-left">
                 <a href="{{ get_url(path="/", lang=lang) }}">
@@ -23,37 +24,35 @@
                 </a>
             </div>
             <div class="nav-menu">
+                {% if nav_items -%}
                 <ul class="nav-voices">
-                  {%- if nav_items -%}
-                    {% for item in nav_items %}
+                    {%- for item in nav_items %}
                     <li>
                       {%- set nav_link_selected = "" -%}
-                      {%- if permalink != "" -%}
-                          {%- if "blog" in item.url and "blog" in permalink -%}
+                      {%- if "blog" in item.url and "blog" in permalink -%}
+                          {%- set nav_link_selected = " nav-link-selected" -%}
+                      {%- else -%}
+                          {%- set split_values = permalink | split(pat="/") -%}
+                          {%- set len = split_values | length -%}
+
+                          {%- set last_value = split_values | nth(n=len - 2) -%}
+                          {%- set last_part = "/" ~ last_value -%}
+
+                          {%- if
+                             (item.url == "/" and (
+                                 (item.prefix == "" and len == 4) or
+                                 (item.prefix != "" and len == 5)
+                             ))
+                             or (item.url == last_part)
+                          -%}
                               {%- set nav_link_selected = " nav-link-selected" -%}
-                          {%- else -%}
-                              {%- set split_values = permalink | split(pat="/") -%}
-                              {%- set len = split_values | length -%}
-
-                              {%- set last_value = split_values | nth(n=len - 2) -%}
-                              {%- set last_part = "/" ~ last_value -%}
-
-                              {% if
-                                 (item.url == "/" and (
-                                     (item.prefix == "" and len == 4) or
-                                     (item.prefix != "" and len == 5)
-                                 ))
-                                 or (item.url == last_part)
-                              %}
-                                  {%- set nav_link_selected = " nav-link-selected" -%}
-                              {%- endif -%}
                           {%- endif -%}
                       {%- endif %}
                       <a href="{{ item.prefix ~ item.url | safe }}" class="nav-link{{ nav_link_selected }}">{{ item.name }}</a>
                     </li>
-                    {%- endfor -%}
-                  {% endif %}
+                    {%- endfor %}
                 </ul>
+                {% endif -%}
                 <div class="nav-controllers">
                     <a href="{{ config.extra.github_link | safe }}" target="_blank" rel="noopener nofollow noreferrer external" aria-label="{{ github_description  | trim }}">
                         <svg class="github-mark" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -95,27 +94,25 @@
                                  {%- endif -%}
                             {%- else -%}
                                 {%- set last_part = "" -%}
-                                {%- if permalink != "" -%}
-                                    {%- set split_values = permalink | split(pat="/") -%}
-                                    {%- set len = split_values | length -%}
+                                {%- set split_values = permalink | split(pat="/") -%}
+                                {%- set len = split_values | length -%}
 
-                                    {%- set last_value = split_values | nth(n=len - 2) -%}
-                                    {%- set last_part = "/" ~ last_value -%}
+                                {%- set last_value = split_values | nth(n=len - 2) -%}
+                                {%- set last_part = "/" ~ last_value -%}
 
-                                    {%- set nav_lang_key = "nav_items_" ~ lang -%}
-                                    {%- set_global route_id = 0 -%}
-                                    {%- for item in config.extra[nav_lang_key] -%}
-                                        {%- if item.url == last_part -%}
-                                            {%- set_global route_id = item.id -%}
-                                        {%- endif -%}
-                                    {%- endfor -%}
+                                {%- set nav_lang_key = "nav_items_" ~ lang -%}
+                                {%- set_global route_id = 0 -%}
+                                {%- for item in config.extra[nav_lang_key] -%}
+                                    {%- if item.url == last_part -%}
+                                        {%- set_global route_id = item.id -%}
+                                    {%- endif -%}
+                                {%- endfor -%}
 
-                                    {%- for item in nav_lang_code_items -%}
-                                        {%- if item.id == route_id -%}
-                                            {%- set_global link = item.prefix ~ item.url -%}
-                                        {%- endif -%}
-                                    {%- endfor -%}
-                                {%- endif -%}
+                                {%- for item in nav_lang_code_items -%}
+                                    {%- if item.id == route_id -%}
+                                        {%- set_global link = item.prefix ~ item.url -%}
+                                    {%- endif -%}
+                                {%- endfor -%}
                             {%- endif %}
                     <a href="{{ link | safe }}" class="multilang-link">{{ lang_code }}</a>
                         {%- endif -%}
@@ -129,6 +126,7 @@
                 <span class="bar bar-3"></span>
             </div>
         </div>
+        {%- endif %}
     </nav>
   </header>
 {%- endmacro header -%}
