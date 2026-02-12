@@ -76,21 +76,21 @@ github_map = { en = "Visit ToscaLabs projects", it = "Guarda i progetti di Tosca
 github_link = "https://github.com/ToscaLabs"
 
 # Menu items in English
-nav_items = [
-    { name = "Home", prefix = "", url = "/" },
-    { name = "Tosca", prefix = "",  url = "/tosca" },
-    { name = "About", prefix = "",  url = "/about" },
-    { name = "Blog", prefix = "",  url = "/blog" },
-    { name = "Contact Us", prefix = "", url = "/#contacts" },
+nav_items_en = [
+    { id = 0, name = "Home", prefix = "", url = "/" },
+    { id = 1, name = "Tosca", prefix = "",  url = "/tosca" },
+    { id = 2, name = "About", prefix = "",  url = "/about" },
+    { id = 3, name = "Blog", prefix = "",  url = "/blog" },
+    { id = 4, name = "Contact Us", prefix = "", url = "/#contacts" },
 ]
 
 # Menu items in Italian
 nav_items_it = [
-    { name = "Home", prefix ="/it", url = "/" },
-    { name = "Tosca", prefix = "/it", url = "/tosca" },
-    { name = "Chi Siamo", prefix = "/it", url = "/chi-siamo" },
-    { name = "Blog", prefix = "/it",  url = "/blog" },
-    { name = "Contattaci", prefix = "/it", url = "/#contatti" },
+    { id = 0, name = "Home", prefix ="/it", url = "/" },
+    { id = 1, name = "Tosca", prefix = "/it", url = "/tosca" },
+    { id = 2, name = "Chi Siamo", prefix = "/it", url = "/chi-siamo" },
+    { id = 3, name = "Blog", prefix = "/it",  url = "/blog" },
+    { id = 4, name = "Contattaci", prefix = "/it", url = "/#contatti" },
 ]
 
 # Data in different languages for the 404 page

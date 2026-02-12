@@ -2,7 +2,7 @@
 
 {%- macro header(config, lang, permalink) -%}
 
-{% set nav_items = config.extra.nav_items %}
+{% set nav_items = config.extra.nav_items_en %}
 {%- if lang and lang != config.default_language -%}
     {% set nav_key = "nav_items_" ~ lang %}
     {%- if config.extra[nav_key] -%}
@@ -27,19 +27,17 @@
                   {%- if nav_items -%}
                     {% for item in nav_items %}
                     <li>
-                      {% set nav_link_selected = "" %}
-                      {% if permalink != "" %}
-                          {% if "blog" in item.url and "blog" in permalink %}
-                              {% set nav_link_selected = " nav-link-selected" %}
-                          {% else %}
-                              {% set split_values = permalink | split(pat="/") %}
-                              {% set len = split_values | length %}
+                      {%- set nav_link_selected = "" -%}
+                      {%- if permalink != "" -%}
+                          {%- if "blog" in item.url and "blog" in permalink -%}
+                              {%- set nav_link_selected = " nav-link-selected" -%}
+                          {%- else -%}
+                              {%- set split_values = permalink | split(pat="/") -%}
+                              {%- set len = split_values | length -%}
 
-                              {# Get the second-to-last part of the permalink #}
-                              {% set last_value = split_values | nth(n=len - 2) %}
-                              {% set last_part = "/" ~ last_value %}
+                              {%- set last_value = split_values | nth(n=len - 2) -%}
+                              {%- set last_part = "/" ~ last_value -%}
 
-                              {# Determine if this nav item should be selected #}
                               {% if
                                  (item.url == "/" and (
                                      (item.prefix == "" and len == 4) or
@@ -47,10 +45,10 @@
                                  ))
                                  or (item.url == last_part)
                               %}
-                                    {% set nav_link_selected = " nav-link-selected" %}
-                              {% endif %}
-                          {% endif %}
-                      {% endif %}
+                                  {%- set nav_link_selected = " nav-link-selected" -%}
+                              {%- endif -%}
+                          {%- endif -%}
+                      {%- endif %}
                       <a href="{{ item.prefix ~ item.url | safe }}" class="nav-link{{ nav_link_selected }}">{{ item.name }}</a>
                     </li>
                     {%- endfor -%}
@@ -63,23 +61,65 @@
                         </svg>
                     </a>
                 {%- if config.languages | length > 0 -%}
-                    {%- for lang_code, lang_config in config.languages -%}
+                    {%- for lang_code, _ in config.languages -%}
                         {%- if lang_code != lang -%}
-                            {%- set link = get_url(path="/", lang=lang_code) -%}
-                            {%- if page is defined and page.translations -%}
-                                {% set translation = page.translations | filter(attribute="lang", value=lang_code) | first %}
-                                {%- if translation -%}
-                                    {% set link = translation.permalink %}
+
+                            {# Definition part #}
+                            {%- set_global link = get_url(path="/", lang=lang_code) -%}
+                            {%- set nav_lang_code_items = config.extra.nav_items_en -%}
+                            {%- set nav_lang_code_key = "nav_items_" ~ lang_code -%}
+                            {%- if config.extra[nav_lang_code_key] -%}
+                                {%- set nav_lang_code_items = config.extra[nav_lang_code_key] -%}
+                            {%- endif -%}
+
+                            {%- if "blog" in permalink -%}
+                                {%- if page is defined and page.translations -%}
+                                    {%- set translation = page.translations | filter(attribute="lang", value=lang_code) | first -%}
+                                    {%- if translation -%}
+                                        {%- set_global link = translation.permalink -%}
+                                    {%- else -%}
+                                        {%- if page.extra.languages.translations -%}
+                                            {%- for t in page.extra.languages.translations -%}
+                                                {%- if lang_code == t.lang -%}
+                                                    {%- set_global link = t.path -%}
+                                                {%- endif -%}
+                                            {%- endfor -%}
+                                        {%- else -%}
+                                            {%- set blog = nav_lang_code_items[3] -%}
+                                            {%- set_global link = blog.prefix ~ blog.url -%}
+                                        {%- endif -%}
+                                    {%- endif -%}
+                                 {%- else -%}
+                                    {%- set blog = nav_lang_code_items[3] -%}
+                                    {%- set_global link = blog.prefix ~ blog.url -%}
+                                 {%- endif -%}
+                            {%- else -%}
+                                {%- set last_part = "" -%}
+                                {%- if permalink != "" -%}
+                                    {%- set split_values = permalink | split(pat="/") -%}
+                                    {%- set len = split_values | length -%}
+
+                                    {%- set last_value = split_values | nth(n=len - 2) -%}
+                                    {%- set last_part = "/" ~ last_value -%}
+
+                                    {%- set nav_lang_key = "nav_items_" ~ lang -%}
+                                    {%- set_global route_id = 0 -%}
+                                    {%- for item in config.extra[nav_lang_key] -%}
+                                        {%- if item.url == last_part -%}
+                                            {%- set_global route_id = item.id -%}
+                                        {%- endif -%}
+                                    {%- endfor -%}
+
+                                    {%- for item in nav_lang_code_items -%}
+                                        {%- if item.id == route_id -%}
+                                            {%- set_global link = item.prefix ~ item.url -%}
+                                        {%- endif -%}
+                                    {%- endfor -%}
                                 {%- endif -%}
-                            {%- elif section is defined and section.translations -%}
-                                {% set translation = section.translations | filter(attribute="lang", value=lang_code) | first %}
-                                {%- if translation -%}
-                                    {% set link = translation.permalink %}
-                                {%- endif -%}
-                            {% endif %}
+                            {%- endif %}
                     <a href="{{ link | safe }}" class="multilang-link">{{ lang_code }}</a>
                         {%- endif -%}
-                    {% endfor %}
+                    {%- endfor -%}
                 {%- endif %}
                 </div>
             </div>

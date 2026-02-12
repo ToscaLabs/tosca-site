@@ -9,7 +9,7 @@ tags = ["rust", "blog", "tosca"]
 [extra.languages]
 message = "Questo articolo può anche essere letto in "
 translations = [
-  { path = "/blog/tosca-is-born", name = "Inglese" }
+  { lang = "en", path = "/blog/tosca-is-born", name = "Inglese" }
 ]
 +++
 
