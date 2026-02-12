@@ -35,6 +35,8 @@
                              {%- set nav_link_selected = " nav-link-selected" -%}
                           {%- elif item.url == "/" and item.prefix != "" and len == 5 -%}
                              {%- set nav_link_selected = " nav-link-selected" -%}
+                          {%- elif "blog" in item.url and "blog" in permalink -%}
+                             {%- set nav_link_selected = " nav-link-selected" -%}
                           {%- else -%}
                               {%- set last_value = split_values | nth(n=len-2) -%}
                               {%- set last_part = "/" ~ last_value -%}
