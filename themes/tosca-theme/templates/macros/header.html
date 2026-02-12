@@ -27,24 +27,27 @@
                   {%- if nav_items -%}
                     {% for item in nav_items %}
                     <li>
-                      {% set nav_link_selected = "" -%}
-                      {%- if permalink != "" -%}
-                          {%- set split_values = permalink | split(pat="/") -%}
-                          {%- set len = split_values | length -%}
-                          {%- if item.url == "/" and item.prefix == "" and len == 4 -%}
-                             {%- set nav_link_selected = " nav-link-selected" -%}
-                          {%- elif item.url == "/" and item.prefix != "" and len == 5 -%}
-                             {%- set nav_link_selected = " nav-link-selected" -%}
-                          {%- elif "blog" in item.url and "blog" in permalink -%}
-                             {%- set nav_link_selected = " nav-link-selected" -%}
-                          {%- else -%}
-                              {%- set last_value = split_values | nth(n=len-2) -%}
-                              {%- set last_part = "/" ~ last_value -%}
-                              {%- if item.url == last_part -%}
-                                 {%- set nav_link_selected = " nav-link-selected" -%}
-                              {%- endif -%}
-                          {%- endif -%}
-                      {%- endif -%}
+                      {% set nav_link_selected = "" %}
+                      {% if permalink != "" %}
+                          {% set split_values = permalink | split(pat="/") %}
+                          {% set len = split_values | length %}
+
+                          {# Get the second-to-last part of the permalink #}
+                          {% set last_value = split_values | nth(n=len - 2) %}
+                          {% set last_part = "/" ~ last_value %}
+
+                          {# Determine if this nav item should be selected #}
+                          {% if
+                             (item.url == "/" and (
+                                 (item.prefix == "" and len == 4) or
+                                 (item.prefix != "" and len == 5)
+                             ))
+                             or ("blog" in item.url and "blog" in permalink)
+                             or (item.url == last_part)
+                          %}
+                                {% set nav_link_selected = " nav-link-selected" %}
+                          {% endif %}
+                      {% endif %}
                       <a href="{{ item.prefix ~ item.url | safe }}" class="nav-link{{ nav_link_selected }}">{{ item.name }}</a>
                     </li>
                     {%- endfor -%}
