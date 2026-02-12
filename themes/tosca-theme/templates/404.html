@@ -21,7 +21,7 @@
                 {%- for language in config.extra.404_languages %}
                 <button class="button button-primary button-medium-large modal"
                         data-description="{{ language.description}}"
-                        data-index="{{ language.index }}"
+                        data-index="{{ language.index | safe }}"
                         data-button="{{ language.goto_button }}">
                     {{ language.button }}
                 </button>
