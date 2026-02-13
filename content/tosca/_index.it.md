@@ -42,8 +42,8 @@ Scritto in [**Rust**](https://rust-lang.org/it/), un linguaggio noto per le
 **performance**, la gestione della **memoria** e la prevenzione delle
 **vulnerabilità**, tutte caratteristiche che riducono notevolmente gli errori
 durante lo sviluppo software.
-Inoltre, le API vengono sottoposte a **test automatici** per individuare il
-maggior numero di errori patologici e fisiologici presenti nel framework.
+Inoltre, le API vengono sottoposte a **test automatici** per individuare gli
+errori presenti nel framework.
 """
 
 [[extra.cards]]
