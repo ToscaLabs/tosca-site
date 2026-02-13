@@ -63,13 +63,12 @@
                     {%- for lang_code, _ in config.languages -%}
                         {%- if lang_code != lang -%}
 
-                            {# Definition part #}
+                            {# Homepage of that language #}
                             {%- set_global link = get_url(path="/", lang=lang_code) -%}
-                            {%- set nav_lang_code_items = config.extra.nav_items_en -%}
-                            {%- set nav_lang_code_key = "nav_items_" ~ lang_code -%}
-                            {%- if config.extra[nav_lang_code_key] -%}
-                                {%- set nav_lang_code_items = config.extra[nav_lang_code_key] -%}
-                            {%- endif -%}
+
+                            {# Get nav items for target language #}
+                            {% set nav_key = "nav_items_" ~ lang_code %}
+                            {% set nav_lang_code_items = config.extra[nav_key] | default(value=config.extra.nav_items_en) %}
 
                             {%- if "blog" in permalink -%}
                                 {%- if page is defined and page.translations -%}
