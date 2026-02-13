@@ -52,14 +52,11 @@
   --button-primary-text-color: rgb(30, 41, 57);
   /*
   /*
-  /* Header */
-  --header-border-color: rgb(229, 229, 229);
-  /*
-  /*
   /* Menu */
   --menu-background-color: rgb(165, 219, 165);
   --menu-background-mobile-color: rgb(255, 255, 255);
   --menu-text-color: rgb(30, 41, 57);
+  --menu-border-color: rgb(229, 229, 229);
   /*
   /*
   /* Section */
@@ -236,7 +233,7 @@ h3 code {
   top: 0;
   width: 100%;
   height: var(--header-height);
-  border-bottom: var(--header-border-size) solid var(--header-border-color);
+  border-bottom: var(--header-border-size) solid var(--menu-border-color);
   background: var(--menu-background-color);
   z-index: 1000;
 }
