@@ -37,7 +37,7 @@ combined by adding or removing lines of code, allowing the final software to be
 [[extra.cards]]
 title = "Secure"
 description = """
-Written in [Rust](https://rust-lang.org/), a language renowned for its
+Written in [**Rust**](https://rust-lang.org/), a language renowned for its
 **performance**, **memory management**, and **vulnerability prevention**,
 all features that significantly minimize errors during software development.
 Furthermore, the APIs are subjected to **automated tests** designed to identify

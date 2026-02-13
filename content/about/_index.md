@@ -49,8 +49,8 @@ description = """
 A preliminary meeting to discuss your **problem** and evaluate whether it can be
 addressed through computer science.
 
-As the conversation progresses, a more detailed **description** of the problem will emerge,
-as its **ambiguities** and **difficulties** are identified.
+As the conversation progresses, a more detailed **description** of the problem
+will emerge, as its **ambiguities** and **difficulties** are identified.
 """
 
 [[extra.cards]]
@@ -70,8 +70,8 @@ description = """
 Once the project outline is complete, it is time to write the software **code**,
 whether for a library or a tool.
 
-As a general rule, **maintainable** and **well-documented** code is always preferred
-over disorganized and incomprehensible code.
+As a general rule, **maintainable** and **well-documented** code is always
+preferred over disorganized and incomprehensible code.
 """
 
 [[extra.cards]]
