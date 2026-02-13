@@ -63,16 +63,24 @@
                     {%- for lang_code, _ in config.languages -%}
                         {%- if lang_code != lang -%}
 
-                            {# Homepage of that language #}
+                            {# Homepage of the target language #}
                             {%- set_global link = get_url(path="/", lang=lang_code) -%}
 
                             {# Get nav items for target language #}
-                            {% set nav_key = "nav_items_" ~ lang_code %}
-                            {% set nav_lang_code_items = config.extra[nav_key] | default(value=config.extra.nav_items_en) %}
+                            {%- set nav_key = "nav_items_" ~ lang_code -%}
+                            {%- set nav_items = config.extra[nav_key] | default(value=config.extra.nav_items_en) -%}
 
                             {%- if "blog" in permalink -%}
+                                {# Default blog link #}
+                                {%- set blog = nav_items[3] -%}
+                                {%- set_global link = blog.prefix ~ blog.url -%}
+
                                 {%- if page is defined and page.translations -%}
-                                    {%- set translation = page.translations | filter(attribute="lang", value=lang_code) | first -%}
+
+                                    {# Try standard Zola translation #}
+                                    {%- set translation = page.translations
+                                        | filter(attribute="lang", value=lang_code)
+                                        | first -%}
                                     {%- if translation -%}
                                         {%- set_global link = translation.permalink -%}
                                     {%- else -%}
@@ -82,32 +90,31 @@
                                                     {%- set_global link = t.path -%}
                                                 {%- endif -%}
                                             {%- endfor -%}
-                                        {%- else -%}
-                                            {%- set blog = nav_lang_code_items[3] -%}
-                                            {%- set_global link = blog.prefix ~ blog.url -%}
                                         {%- endif -%}
                                     {%- endif -%}
-                                 {%- else -%}
-                                    {%- set blog = nav_lang_code_items[3] -%}
-                                    {%- set_global link = blog.prefix ~ blog.url -%}
-                                 {%- endif -%}
+                                {%- endif -%}
                             {%- else -%}
-                                {%- set last_part = "" -%}
+                                {# Extract last URL segment #}
                                 {%- set split_values = permalink | split(pat="/") -%}
                                 {%- set len = split_values | length -%}
+                                {%- if len > 1 -%}
+                                    {%- set last_value = split_values | nth(n=len - 2) -%}
+                                    {%- set last_part = "/" ~ last_value -%}
+                                {%- endif -%}
 
-                                {%- set last_value = split_values | nth(n=len - 2) -%}
-                                {%- set last_part = "/" ~ last_value -%}
-
-                                {%- set nav_lang_key = "nav_items_" ~ lang -%}
+                                {# Find route id of the current language #}
+                                {%- set current_nav_key = "nav_items_" ~ lang -%}
+                                {%- set current_nav = config.extra[current_nav_key] -%}
                                 {%- set_global route_id = 0 -%}
-                                {%- for item in config.extra[nav_lang_key] -%}
+
+                                {%- for item in current_nav -%}
                                     {%- if item.url == last_part -%}
                                         {%- set_global route_id = item.id -%}
                                     {%- endif -%}
                                 {%- endfor -%}
 
-                                {%- for item in nav_lang_code_items -%}
+                                {# Match same id in target language nav #}
+                                {%- for item in nav_items -%}
                                     {%- if item.id == route_id -%}
                                         {%- set_global link = item.prefix ~ item.url -%}
                                     {%- endif -%}
