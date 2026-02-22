@@ -1,10 +1,17 @@
 +++
 template = "post.html"
 
-title = "Tosca is born `here`!"
-description = "The first post about tosca"
+title = "tosca: a customizable and self-contained IoT framework"
+description = """
+`tosca` allows to design firmware for various hardware architecture and
+the same time to create a controller able to interact with these firmware.
+Its innovation resides in its security-by-design aspects, thus reducing the
+amount of bugs at compile-time and the hazards concept that outlines clearly
+the safety, economic, and privacy risks coming from the executions of
+device operations.
+"""
 date = 2026-02-05
-tags = ["rust", "blog", "tosca"]
+tags = ["rust", "secure-by-design", "tosca"]
 
 [extra.languages]
 message = "This post can also be read in "
@@ -13,167 +20,32 @@ translations = [
 ]
 +++
 
-## Install Zola
+The `tosca` framework finally came to light! 🎉
 
-```bash
-# macOS
-brew install zola
-```
+Starting as an academic project with the goal of creating an architecture that
+might be more reliable in terms of usage and more transparent on the risks
+about device operations. Afterwards, its entire conception has evolved during
+the two years time into the idea of having a customizable and self-contained
+framework.
 
-- [x] One
-- [ ] Two
+With the customizable term, we mean that all the commands of a device
+can be exposed such that a controller can interact with them and all of their
+parameters. This property allows to map any device using `tosca` APIs.
+With the self-contained term, we mean a framework that does not require external
+libraries to build neither a firmware neither the associated controller.
+Therefore, having something which does not
+require having external dependencies to build an ecosystem.
 
-- One
-- Two
+At first, we are going to explain the `tosca` framework, its potentiality, but
+also what it lacks, concluding with an example of APIs showcase.
 
-See [Zola installation guide](https://www.getzola.org/documentation/getting-started/installation/) for other systems.
+# What is `tosca`?
 
-## Create Site
 
-| ID  | Name      | Age | City       | Status    |
-|-----|-----------|-----|------------|-----------|
-| 1   | Alice     | 25  | New York   | Active    |
-| 2   | Bob       | 30  | London     | Inactive  |
-| 3   | Charlie   | 22  | Paris      | Active    |
-| 4   | Diana     | 28  | Tokyo      | Pending   |
-| 5   | Edward    | 35  | Sydney     | Active    |
+# Main Objectives
 
-```bash
-zola init your-docs
-cd your-docs
-zola serve  # View at http://localhost:1111
-```
+# API Showcase
 
-## Install Goyo Theme
+# What's missing?
 
-**Clone:**
-```bash
-git clone https://github.com/hahwul/goyo themes/goyo
-```
-
-**Submodule:**
-```bash
-git submodule add https://github.com/hahwul/goyo themes/goyo
-```
-
-### Initialize Submodule (When Cloning)
-
-If you clone a repository that already has Goyo installed as a submodule, you need to initialize and update the submodule:
-
-**Option 1: Clone with submodules**
-```bash
-git clone --recursive https://github.com/your-repo/your-docs
-```
-
-**Option 2: Initialize after cloning**
-```bash
-git clone https://github.com/your-repo/your-docs
-cd your-docs
-git submodule init
-git submodule update
-```
-
-## Update Theme
-
-**Clone method:**
-```bash
-cd themes/goyo
-git pull origin main
-```
-
-**Submodule method:**
-```bash
-git submodule update --remote themes/goyo
-git add themes/goyo
-git commit -m "Update Goyo theme"
-```
-
-### Automated Updates (Optional)
-
-Create `.github/workflows/update-goyo-theme.yml`:
-
-```yaml
-name: Update Goyo Theme
-
-on:
-  schedule:
-    # Run every Monday at 9:00 AM UTC
-    - cron: "0 9 * * 1"
-  workflow_dispatch: # Allow manual trigger
-
-env:
-  GIT_USER_NAME: "github-actions[bot]"
-  GIT_USER_EMAIL: "github-actions[bot]@users.noreply.github.com"
-  THEME_PATH: "themes/goyo"
-
-jobs:
-  update-theme:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          submodules: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update Goyo submodule
-        id: update
-        run: |
-          git config user.name "${{ env.GIT_USER_NAME }}"
-          git config user.email "${{ env.GIT_USER_EMAIL }}"
-
-          # Get current commit hash
-          OLD_COMMIT=$(git rev-parse HEAD:${{ env.THEME_PATH }})
-
-          # Update submodule to latest
-          git submodule update --remote ${{ env.THEME_PATH }}
-          git add ${{ env.THEME_PATH }}
-
-          # Get new commit hash
-          NEW_COMMIT=$(git --git-dir=${{ env.THEME_PATH }}/.git rev-parse HEAD)
-
-          # Check if there are changes
-          if [ "$OLD_COMMIT" != "$NEW_COMMIT" ]; then
-            echo "updated=true" >> $GITHUB_OUTPUT
-            echo "old_commit=$OLD_COMMIT" >> $GITHUB_OUTPUT
-            echo "new_commit=$NEW_COMMIT" >> $GITHUB_OUTPUT
-          else
-            echo "updated=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Create Pull Request
-        if: steps.update.outputs.updated == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Update Goyo theme to latest version"
-          title: "Update Goyo theme"
-          body: |
-            This PR updates the Goyo theme to the latest version.
-
-            **Changes:** ${{ steps.update.outputs.old_commit }} → ${{ steps.update.outputs.new_commit }}
-
-            Please review the [Goyo changelog](https://github.com/hahwul/goyo/releases) for details on what's new.
-
-            ---
-            *This PR was automatically created by the Update Goyo Theme workflow.*
-          branch: update-goyo-theme
-          delete-branch: true
-          labels: dependencies, documentation
-```
-
-Customize as needed: schedule, git user, theme path.
-
-## Configure Theme
-
-Set theme in `config.toml`:
-
-```toml
-theme = "goyo"
-```
-
-Run `zola serve` to view your site.
+# Conclusion
