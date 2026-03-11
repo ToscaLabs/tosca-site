@@ -3,12 +3,10 @@ template = "post.html"
 
 title = "tosca: a customizable and self-contained IoT framework"
 description = """
-`tosca` allows to design firmware for various hardware architecture and
-the same time to create a controller able to interact with these firmware.
-Its innovation resides in its security-by-design aspects, thus reducing the
-amount of bugs at compile-time and the hazards concept that outlines clearly
-the safety, economic, and privacy risks coming from the executions of
-device operations.
+`tosca` enables developers to design firmware for multiple hardware
+architectures and controllers to interact with them.
+Its security-by-design approach reduces compile-time bugs, while its hazards
+expose the safety, economic, and privacy risks of device operations.
 """
 date = 2026-02-05
 tags = ["rust", "secure-by-design", "tosca"]
@@ -20,32 +18,57 @@ translations = [
 ]
 +++
 
-The `tosca` framework finally came to light! 🎉
+The `tosca` framework has finally come to light! 🎉
 
-Starting as an academic project with the goal of creating an architecture that
-might be more reliable in terms of usage and more transparent on the risks
-about device operations. Afterwards, its entire conception has evolved during
-the two years time into the idea of having a customizable and self-contained
-framework.
+Started as an academic project to design an IoT architecture that exposes the
+risks of executing device commands, over the past two years `tosca` has evolved
+into a **customizable and self-contained framework**.
 
-With the customizable term, we mean that all the commands of a device
-can be exposed such that a controller can interact with them and all of their
-parameters. This property allows to map any device using `tosca` APIs.
-With the self-contained term, we mean a framework that does not require external
-libraries to build neither a firmware neither the associated controller.
-Therefore, having something which does not
-require having external dependencies to build an ecosystem.
+By *customizable*, we mean that firmware developers can expose some or all
+device commands to external interfaces using `tosca` APIs, without significantly
+changing the internal firmware structure.
+These APIs assign a route to each command and, during firmware startup,
+aggregate all route information into a single file that serves as the firmware
+description.
+External software can discover the device on the network using the `tosca`
+controller APIs and then make a server request to obtain its description file.
+By parsing this file, the APIs provide the ability to control the device
+commands and configure their parameters.
 
-At first, we are going to explain the `tosca` framework, its potentiality, but
-also what it lacks, concluding with an example of APIs showcase.
+By *self-contained*, we mean that the framework does not rely on any external
+dependencies to establish communication between a firmware and its controller.
 
-# What is `tosca`?
+## Main Features
 
+* **Designed for IoT applications**, from _home automation_ to _industrial
+processes_, including the development of devices for social purposes, such as
+supporting people with disabilities and older adults.
+* **Modular Firmware APIs** for building firmware components such as firmware
+descriptions, discovery protocols, and server definitions.
+* **Customizable Controller APIs** for discovering devices on a network,
+executing their commands, and managing their privacy information.
+* **Command Hazards** are labels attached to device commands to notify users
+of potential _safety_, _privacy_, and _financial_ hazards during execution.
+* **Safe programming with Rust** to guarantee memory and thread safety,
+preventing many classes of bugs at compile time.
 
-# Main Objectives
+## Still Missing Features
 
-# API Showcase
+- **Secure communication** between firmware devices and controllers, ensuring
+confidentiality, integrity, and authentication.
+- **Over-the-Air (OTA)** firmware updates, enabling remote and reliable device
+upgrades.
+- **Bluetooth stack integration** for wireless connectivity and device
+communication.
+- **Accurate energy and performance metrics**, allowing precise on-device
+monitoring and analysis.
+- **Support for additional microcontroller architectures**, expanding hardware
+compatibility and portability.
+- **Command scheduling system**, enabling controllers to execute device commands
+at specific times or according to defined schedules.
+- **Reduced heap allocations on firmware devices**, improving memory efficiency,
+predictability, and suitability for resource-constrained environments.
 
-# What's missing?
+# APIs showcase
 
 # Conclusion
