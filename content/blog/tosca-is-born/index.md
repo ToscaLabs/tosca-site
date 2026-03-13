@@ -3,14 +3,15 @@ template = "post.html"
 
 title = "`tosca` is born!"
 description = """
-`tosca` is a new IoT framework that enables developers to design firmware for
-several hardware architectures, along with the corresponding controllers
-to interact with them. Its security-by-design approach helps reduce compile-time
-bugs, while its hazard system exposes the safety, economic, and privacy risks of
-device commands.
+`tosca` is a self-contained IoT framework that enables developers to design
+firmware for several hardware architectures and the controllers that interact
+with it.
+Its security-by-design approach reduces compile-time bugs, while its hazard
+system exposes the safety, economic, and privacy risks of
+executing device commands.
 """
 date = 2026-02-05
-tags = ["rust", "secure-by-design", "tosca"]
+tags = ["tosca". "secure-by-design", "rust"]
 
 [extra.languages]
 message = "This post can also be read in "
@@ -21,36 +22,40 @@ translations = [
 
 The `tosca` framework has finally come to light! 🎉🎉
 
-Started as an academic project aimed at designing an IoT architecture that makes
-transparent to a user the risks of executing device commands, over the past two
-years `tosca` has evolved into a **customizable and self-contained framework**.
+Started as an academic project to design an IoT architecture that makes the
+risks of executing device commands transparent to users, `tosca` has, over
+the past two years, evolved into a **customizable, self-contained framework**.
 
-By *customizable*, we mean that firmware developers can expose some or all
-device commands to external interfaces using `tosca` APIs, without significantly
-changing the internal firmware structure.
-These APIs assign a route to each command and, during firmware startup,
-aggregate all route information into a single file that serves as the firmware
-description.
-External software can discover the device on the network using the `tosca`
-controller APIs and then make a server request to obtain its description file.
-By parsing this file, the APIs provide the ability to control the device
-commands and configure their parameters.
+By _customizable_, we mean that firmware developed in `tosca` does not need
+to modify how device commands are implemented internally. The framework APIs are
+responsible only for exposing them externally, hiding certain parameters, or
+including additional metadata. They achieve this by defining an _HTTP_ route for
+each command and, during firmware startup, aggregating all route information
+into a single file that serves as the device's description.
+To discover `tosca`-compliant devices on a network, a software application
+integrates the `tosca` controller component, which retrieves the device
+description file through a _REST_ request and adapts the data to its internal
+structures, enabling the application to issue commands and configure their
+parameters. It also provides APIs for managing the security and privacy aspects
+associated with these commands.
 
 By *self-contained*, we mean that the framework does not rely on any external
 dependencies to establish communication between a firmware and its controller.
+Therefore, `tosca` is an independent system that minimizes its use of external
+resources.
 
 # Main Features
 
-* **Designed for IoT applications**, from _home automation_ to _industrial
-processes_, including the development of devices for social purposes, such as
-supporting people with disabilities and older adults.
-* **Modular Firmware APIs** for building firmware components such as firmware
-descriptions, discovery protocols, and server definitions.
-* **Customizable Controller APIs** for discovering devices on a network,
-executing their commands, and managing their privacy information.
-* **Command Hazards** are labels attached to device commands to notify users
+* **Designed for IoT applications**: from _home automation_ to _industrial
+processes_, including devices for social purposes, such as those assisting
+people with disabilities and older adults.
+* **Firmware APIs**: for building firmware components, including device
+descriptors, discovery protocols, and server definitions.
+* **Controller APIs**: for discovering devices on a network, executing their
+commands, and managing their hazards information.
+* **Command Hazards**: labels attached to device commands to alert users
 of potential _safety_, _privacy_, and _financial_ hazards during execution.
-* **Safe programming with Rust** to guarantee memory and thread safety,
+* **Safe programming with Rust**: memory and thread safety guarantees,
 preventing many classes of bugs at compile time.
 
 # Still Missing Features
