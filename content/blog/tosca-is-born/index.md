@@ -29,20 +29,22 @@ the past two years, evolved into a **customizable, self-contained framework**.
 By _customizable_, we mean that firmware developed in `tosca` does not need
 to modify how device commands are implemented internally. The framework APIs are
 responsible only for exposing them externally, hiding certain parameters, or
-including additional metadata. They achieve this by defining an _HTTP_ route for
+including additional metadata. This happens by defining an _HTTP_ route for
 each command and, during firmware startup, aggregating all route information
 into a single file that serves as the device's description.
 To discover `tosca`-compliant devices on a network, a software application
-integrates the `tosca` controller component, which retrieves the device
-description file through a _REST_ request and adapts the data to its internal
-structures, enabling the application to issue commands and configure their
-parameters. It also provides APIs for managing the security and privacy aspects
+integrates the `tosca` controller component.
+This component retrieves the device description file through a _REST_ request
+and maps the data to the application's internal structures.
+As a result, the application can issue commands to the devices and configure
+their parameters. T
+he controller also exposes APIs to manage the security and privacy aspects
 associated with these commands.
 
 By *self-contained*, we mean that the framework does not rely on any external
-dependencies to establish communication between a firmware and its controller.
-Therefore, `tosca` is an independent system that minimizes its use of external
-resources.
+dependencies to establish communication between the firmware and its controller.
+Therefore, `tosca` operates as an independent system that minimizes reliance
+on external resources.
 
 # Main Features
 
@@ -50,7 +52,7 @@ resources.
 processes_, including devices for social purposes, such as those assisting
 people with disabilities and older adults.
 * **Firmware APIs**: for building firmware components, including device
-descriptors, discovery protocols, and server definitions.
+descriptors, discovery protocols, and server configurations.
 * **Controller APIs**: for discovering devices on a network, executing their
 commands, and managing their hazards information.
 * **Command Hazards**: labels attached to device commands to alert users
@@ -60,20 +62,27 @@ preventing many classes of bugs at compile time.
 
 # Still Missing Features
 
-- **Secure communication** between firmware devices and controllers, ensuring
-confidentiality, integrity, and authentication.
-- **Over-the-Air (OTA)** firmware updates, enabling remote and reliable device
-upgrades.
-- **Bluetooth stack integration** for wireless connectivity and device
-communication.
-- **Accurate energy and performance metrics**, allowing precise on-device
-monitoring and analysis.
-- **Support for additional microcontroller architectures**, expanding hardware
-compatibility and portability.
-- **Command scheduling system**, enabling controllers to execute device commands
-at specific times or according to defined schedules.
-- **Reduced heap allocations on firmware devices**, improving memory efficiency,
-predictability, and suitability for resource-constrained environments.
+- **Secure communication**: ensure confidentiality, integrity, and
+authentication between firmware devices and controllers.
+- **Bluetooth stack integration**: enable wireless connectivity and
+communication with devices..
+- **Accurate energy and performance metrics**: provide primitives for precise
+on-device monitoring and performance analysis.
+- **Support for additional microcontroller architectures**: expand hardware
+compatibility and improve portability.
+- **Command scheduling system**: allow controllers to execute device commands
+at specific times or according to predefined schedules.
+- **Over-the-Air (OTA) updates**: enable reliable remote firmware upgrades.
+
+## Technical aspects
+
+- **Code Refactoring**: remove duplicated code, clarify API intent, and
+eliminate ambiguous logic shared between devices and controllers.
+- **Reduced heap allocations on firmware devices**: improve memory efficiency
+for resource-constrained environments
+- **Performance Optimizations**: reduce the number of instructions in critical
+methods, leverage more efficient hardware instructions, and minimize reliance
+on external crates whenever possible.
 
 # `tosca` Structure
 
@@ -172,4 +181,38 @@ block requests that do not comply with the specified rules.
 that represent their internal state, by subscribing to the device brokers
 provided in their descriptions.
 
-# Conclusions
+# Conclusions & Future Plans
+
+`tosca` represents a new approach to connecting firmware devices with
+their controller. It makes extensive use of cutting-edge technologies to build
+components that are more reliable and less error-prone.
+The framework aims to provide a set of clear and easily understandable APIs for
+both the firmware and the controller components.
+This design guides developers in building the crates of their IoT systems on
+top of the framework using APIs that resemble natural language as closely as
+possible.
+
+As future work, we plan to release version `0.2` of the framework with the
+following improvements:
+
+* **Contract-based `tosca` crate**: extend the `tosca` library crate so that
+it can act as a shared contract between a downstream firmware binary crate and
+a controller binary crate. In this way, developers will not need to contribute
+to the framework to modify hard-coded values or introduce additional interfaces,
+but can instead rely on a minimal shared interface.
+* **Support for dynamic device behavior**: consider the devices that may join or
+leave the network at any time. The `tosca-controller` should be able to
+reliably detect these changes and provide mechanisms to register and manage
+the behaviors of connected devices.
+* **Secure communication**: implement secure communication between firmware
+devices and controllers. Currently, no security mechanisms are in place, and
+all exchanged messages are transmitted in plaintext, making the infrastructure
+vulnerable.
+* **API unification across device crates**: harmonize the APIs of the
+`tosca-os` and `tosca-esp32c3` crates. At present, some features are implemented
+only for specific targets—for example, the event manager exists in
+`tosca-esp32c3` but not in `tosca-os`.
+
+# Acknowledgments
+
+
